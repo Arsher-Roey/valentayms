@@ -42,10 +42,9 @@ body {
 }
 
 .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 270px;
     max-width: 100%; /* Ensures image never overflows container */
-    border-radius: 50%;
     object-fit: cover;
     border: 5px solid #667eea;
     background: #f0f0f0;
@@ -188,6 +187,6 @@ body {
 
     .profile-image {
         width: 180px;
-        height: 270px;
+        height: 180px;
     }
 }
