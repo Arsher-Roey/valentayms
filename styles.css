@@ -37,12 +37,15 @@ body {
 
 .image-container {
     margin: 30px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .profile-image {
-    width: 180px;
-    height: 270px;
-    border-radius: 0;
+    width: 200px;
+    height: 200px;
+    max-width: 100%; /* Ensures image never overflows container */
+    border-radius: 50%;
     object-fit: cover;
     border: 5px solid #667eea;
     background: #f0f0f0;
@@ -72,6 +75,7 @@ body {
 .yes-btn {
     background: #4CAF50;
     color: white;
+    z-index: 2; /* Keeps it above moving elements */
 }
 
 .yes-btn:hover {
@@ -82,7 +86,7 @@ body {
 .no-btn {
     background: #f44336;
     color: white;
-    position: absolute;
+    position: absolute; /* Needed for the "escaping" logic */
 }
 
 .no-btn:hover {
@@ -116,73 +120,58 @@ body {
     animation: float 3s ease-in-out infinite;
 }
 
-.heart:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.heart:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-.heart:nth-child(3) {
-    animation-delay: 1s;
-}
-
+/* Animations */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
+
+/* --- RESPONSIVE DESIGN --- */
 
 /* Responsive Design for Phones */
 @media (max-width: 480px) {
     .container {
-        padding: 30px 20px;
+        padding: 25px 15px;
+        width: 95%; /* Prevents container from touching screen edges */
     }
 
     .invitation-text {
-        font-size: 20px;
+        font-size: 19px;
+        margin-bottom: 20px;
     }
 
     .profile-image {
-        width: 150px;
-        height: 150px;
+        width: 140px; /* Reduced for mobile */
+        height: 140px;
+        border-width: 3px;
+    }
+
+    .button-container {
+        gap: 10px;
+        margin: 30px 0;
     }
 
     .btn {
-        padding: 12px 30px;
-        font-size: 16px;
+        padding: 12px 25px;
+        font-size: 15px;
     }
 
     .thank-you-text {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .hearts {
-        font-size: 35px;
+        font-size: 30px;
     }
 }
 
@@ -194,20 +183,11 @@ body {
     }
 
     .invitation-text {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     .profile-image {
-        width: 220px;
-        height: 220px;
-    }
-
-    .btn {
-        padding: 16px 45px;
-        font-size: 19px;
-    }
-
-    .thank-you-text {
-        font-size: 30px;
+        width: 180px;
+        height: 180px;
     }
 }
