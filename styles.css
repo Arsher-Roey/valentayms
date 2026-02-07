@@ -36,16 +36,17 @@ body {
 }
 
 .image-container {
-    margin: 30px 0;
+    margin: 20px 0;
     display: flex;
     justify-content: center;
 }
 
 .profile-image {
-    width: 180px;
-    height: 270px;
-    max-width: 100%; /* Ensures image never overflows container */
-    object-fit: cover;
+    width: 250px;
+    height: auto;        /* Fixes the "cut off head" issue */
+    max-width: 100%;     /* Keeps it responsive */
+    border-radius: 12px; /* Rectangular with soft corners */
+    object-fit: contain; /* Ensures the whole person is visible */
     border: 5px solid #667eea;
     background: #f0f0f0;
 }
@@ -56,8 +57,8 @@ body {
     gap: 20px;
     justify-content: center;
     align-items: center;
-    margin: 40px 0;
-    min-height: 60px;
+    margin: 30px 0;
+    min-height: 80px;   /* Extra height so the buttons don't hit the image */
 }
 
 .btn {
@@ -74,18 +75,17 @@ body {
 .yes-btn {
     background: #4CAF50;
     color: white;
-    z-index: 2; /* Keeps it above moving elements */
 }
 
 .yes-btn:hover {
     background: #45a049;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .no-btn {
     background: #f44336;
     color: white;
-    position: absolute; /* Needed for the "escaping" logic */
+    position: absolute;
 }
 
 .no-btn:hover {
@@ -137,56 +137,30 @@ body {
 
 /* --- RESPONSIVE DESIGN --- */
 
-/* Responsive Design for Phones */
 @media (max-width: 480px) {
     .container {
         padding: 25px 15px;
-        width: 95%; /* Prevents container from touching screen edges */
+        width: 90%;
     }
 
     .invitation-text {
-        font-size: 19px;
-        margin-bottom: 20px;
+        font-size: 20px;
+        margin-bottom: 15px;
     }
 
     .profile-image {
-        width: 140px; /* Reduced for mobile */
-        height: 140px;
+        width: 180px; /* Reduced width for phones to fit better */
+        height: auto;
         border-width: 3px;
     }
 
     .button-container {
-        gap: 10px;
-        margin: 30px 0;
+        gap: 15px;
+        min-height: 70px;
     }
 
     .btn {
         padding: 12px 25px;
-        font-size: 15px;
-    }
-
-    .thank-you-text {
-        font-size: 20px;
-    }
-
-    .hearts {
-        font-size: 30px;
-    }
-}
-
-/* Responsive Design for iPads and Tablets */
-@media (min-width: 481px) and (max-width: 1024px) {
-    .container {
-        max-width: 500px;
-        padding: 50px 40px;
-    }
-
-    .invitation-text {
-        font-size: 24px;
-    }
-
-    .profile-image {
-        width: 180px;
-        height: 180px;
+        font-size: 16px;
     }
 }
